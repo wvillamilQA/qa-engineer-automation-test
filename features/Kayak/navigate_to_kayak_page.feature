@@ -40,10 +40,17 @@ Feature: Validate element created dropdown column
     When I click on the "<menu_option>" menu option
     Then The url page should be equal to the next "<expected_url>" url
 
-   Examples:
-    | menu_option   | expected_url                        |
-    | flights       | https://www.kayak.com.co/flights    |
-    | stays         | https://www.kayak.com.co/stays      |
-    | cars          | https://www.kayak.com.co/cars       |
-    | city_breaks   | https://www.kayak.com.co/citybreaks |
+    Examples:
+      | menu_option        | expected_url                                          |
+      | flights            | https://www.kayak.com.co/flights                      |
+      | stays              | https://www.kayak.com.co/stays                        |
+      | cars               | https://www.kayak.com.co/cars                         |
+      | packages           | https://www.kayak.com.co/citybreaks                   |
+      | explore            | https://www.kayak.com/explore/BOG-anywhere            |
+      | blog               | https://www.kayak.com.co/news/                        |
+      | direct_flights     | https://www.kayak.com.co/direct                       |
+      | best_moment        | https://www.kayak.com.co/el-mejor-momento-para-viajar |
+      | kayak_for_business | https://www.kayak.com.co/business/                    |
+      | trips              | https://www.kayak.com.co/trips                        |
+
 

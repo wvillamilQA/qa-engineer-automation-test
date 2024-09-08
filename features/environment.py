@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+
 from lib.pages.basepage import BasePage
 from lib.pages.homepage import HomePage
 
@@ -68,10 +70,9 @@ def set_local_driver() -> webdriver:
     chrome_options.add_argument("--lang=en-US")
     chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
     chrome_options.add_experimental_option('useAutomationExtension', False)
-    service = ChromeService(executable_path=r'C:\Users\wv_az\Downloads\chromedriver-win64\chromedriver.exe')
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    return driver
-    # return webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    return webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    # service = ChromeService(executable_path=r'C:\Users\wv_az\Downloads\chromedriver-win64\chromedriver.exe')
+    # driver = webdriver.Chrome(service=service, options=chrome_options)
 
 
 def set_docker_driver() -> webdriver:

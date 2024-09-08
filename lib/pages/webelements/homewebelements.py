@@ -15,11 +15,15 @@ class HomeWebElements:
     create_column_disabled_button = (By.CSS_SELECTOR, '.c_neb-mod-add-button')
     search_menu = (By.CSS_SELECTOR, 'nav[aria-label="Buscar"]')
 
+    #menu_options
     flights_option = (By.XPATH, '//nav/ul/li[1]/a/svg')
     stays_option = (By.CSS_SELECTOR, 'li a[href="/stays"]')
     cars_option = (By.CSS_SELECTOR, 'li a[href="/cars"]')
-    citybreaks_option = (By.CSS_SELECTOR, 'li a[href="/citybreaks"]')
-    trip_planning_menu = (By.CSS_SELECTOR, '.pRB0 div div:nth-child(2) > nav')
-    trips_menu = (By.CSS_SELECTOR, '.pRB0-nav-items div a')
-    final_menu = (By.CSS_SELECTOR, '.pRB0 div div:nth-child(4)')
+    packages = (By.CSS_SELECTOR, 'li a[href="/citybreaks"]')
+    explore = (By.CSS_SELECTOR, '.FVRF-drawer-content-wrapper nav ul li:first-child a div')
+    blog = (By.CSS_SELECTOR, 'nav > ul > li:nth-child(2) > a > div')
+    direct_flights = (By.CSS_SELECTOR, '#root .mc6t-main-content .c5ab7-mod-absolute .FVRF-drawer-content-wrapper nav ul li:nth-child(3) a div')
+    best_moment = (By.CSS_SELECTOR, '#root .mc6t-main-content .c5ab7-mod-absolute .FVRF-drawer-content-wrapper nav ul li:nth-child(4) a div')
+    kayak_for_business = (By.CSS_SELECTOR, '#root .mc6t-main-content .c5ab7-mod-absolute .FVRF-drawer-content-wrapper nav ul li:nth-child(5) a div')
+    trips = (By.CSS_SELECTOR, '#root > div > header > div > div.mc6t-main-content.mc6t-mod-bordered > div > div.c5ab7.c5ab7-mod-absolute > div.FVRF-drawer-content-wrapper > div > div:nth-child(1) > div:nth-child(5) > div > a > div')
 
