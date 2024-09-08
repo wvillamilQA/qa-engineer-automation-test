@@ -9,6 +9,7 @@ class BasePage(object):
         self.web_driver = context.web_driver
         self.context = context
         self.base_url = self.get_url_per_environment(context)
+        print(f"BasePage initialized with driver: {self.web_driver}")
 
     def delete_all_cookies(self):
         """
@@ -45,6 +46,17 @@ class BasePage(object):
         find a page element in the DOM
         """
         try:
+            print(f"Finding element with selector: {selector}")
+            return self.web_driver.find_element(selector[0], selector[1])
+        except NoSuchElementException as e:
+            raise e
+
+    def find_element_in_page(self, selector) -> WebElement:
+        """
+        find a page element in the DOM
+        """
+        try:
+            print(f"Finding element with selector: {selector}")
             return self.web_driver.find_element(selector[0], selector[1])
         except NoSuchElementException as e:
             raise e

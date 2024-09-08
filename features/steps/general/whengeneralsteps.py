@@ -2,6 +2,7 @@ from behave import when, use_step_matcher
 
 from lib.components.generalcomponents import GeneralComponents
 from lib.helpers.generalhelpers import transformation_helper
+from lib.pages.homepage import HomePage
 
 use_step_matcher("re")
 
@@ -28,3 +29,16 @@ def step_impl(context, option):
 @when(u'I search "(?P<option>.*)" in the input')
 def step_impl(context, option):
     return context.current_page.text_value_in_the_filter(option)
+
+
+@when('I click on the "(?P<menu_option>.+)" menu option')
+def step_impl(context, menu_option):
+    home_page = HomePage(context)
+
+    # Usar el diccionario para seleccionar la acción correspondiente
+    if menu_option in home_page.menu_actions():
+        action = home_page.menu_actions()[menu_option]
+        print(f"Executing action for: {menu_option}")
+        action()  # Ejecutar la acción correspondiente
+    else:
+        raise ValueError(f"Unknown menu option: {menu_option}")

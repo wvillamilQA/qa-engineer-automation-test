@@ -187,6 +187,7 @@ class GeneralComponents(object):
     @staticmethod
     def click_component_by_name(context, component_name, name_element):
         component_elements = context.current_page.get_component_elements_per_name(component_name)
+        # web_element = context.browser.find_element(component_elements[name_element])
         web_element = context.browser.find_element(component_elements.__dict__.get(name_element))
         return web_element.click()
 

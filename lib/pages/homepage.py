@@ -15,6 +15,7 @@ class HomePage(BasePage):
         self.context = context
         self.web_driver = context.browser
         self.webElements = HomeWebElements
+        print("HomePage initialized")
 
     def get_title_page(self):
         return self.web_driver.get_title_page()
@@ -29,3 +30,27 @@ class HomePage(BasePage):
 
     def reload_page(self):
         return self.reload_page()
+
+    def menu_actions(self):
+        return {
+                "flights": self.navigate_to_flights,
+                "stays": self.navigate_to_stays,
+                "cars": self.navigate_to_cars,
+                "city_breaks": self.navigate_to_city_breaks
+            }
+
+    def navigate_to_flights(self):
+        print(f"Clicking on flights: {self.webElements.flights_option}")
+        self.find_element(*self.webElements.flights_option).click()
+
+    def navigate_to_stays(self):
+        print(f"Clicking on stays: {self.webElements.stays_option}")
+        self.find_element(self.webElements.stays_option).click()
+
+    def navigate_to_cars(self):
+        print(f"Clicking on cars: {self.webElements.cars_option}")
+        self.find_element(self.webElements.cars_option).click()
+
+    def navigate_to_city_breaks(self):
+        print(f"Clicking on city breaks: {self.webElements.citybreaks_option}")
+        self.find_element(self.webElements.citybreaks_option).click()

@@ -1,23 +1,28 @@
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
 from lib.pages.basepage import BasePage
 from lib.pages.homepage import HomePage
 
 
 def before_all(context):
     driver = set_selenium_driver(context)
-    driver.set_page_load_timeout('0.5')
+    driver.set_page_load_timeout('30')
     driver.maximize_window()
 
     context.web_driver = driver
     context.browser = BasePage(context)
     context.home = HomePage(context)
 
+    print(f"Driver initialized: {context.web_driver}")
+
     contexts = {
         'home': context.home,
     }
 
     context.all_contexts = contexts
+
+    print(contexts)
 
 
 def after_scenario(context, scenario):
@@ -63,7 +68,10 @@ def set_local_driver() -> webdriver:
     chrome_options.add_argument("--lang=en-US")
     chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
     chrome_options.add_experimental_option('useAutomationExtension', False)
-    return webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    service = ChromeService(executable_path=r'C:\Users\wv_az\Downloads\chromedriver-win64\chromedriver.exe')
+    driver = webdriver.Chrome(service=service, options=chrome_options)
+    return driver
+    # return webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
 
 def set_docker_driver() -> webdriver:
@@ -78,6 +86,7 @@ def set_docker_driver() -> webdriver:
         command_executor='http://0.0.0.0:4444/wd/hub',
         desired_capabilities=chrome_options.to_capabilities()
     )
+
 
 def test_rail_report(context):
     return context.config.userdata["testrail"]
